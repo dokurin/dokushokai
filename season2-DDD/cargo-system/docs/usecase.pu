@@ -1,0 +1,41 @@
+@startuml
+
+rectangle 貨物予約 {
+  actor :運営: as admin
+  actor :顧客: as customer
+
+  usecase (貨物登録) as cargo
+  usecase (顧客登録) as customer_create
+
+  customer --> admin : 予約連絡
+  admin --> customer_create
+  admin --> cargo
+}
+
+newpage
+
+rectangle 荷役 {
+  actor :運営: as admin
+  actor :顧客(支払人): as customer
+
+  usecase (荷役登録) as event
+  usecase (請求送付) as claim
+
+  admin --> event
+  event .> claim : include
+  claim --> customer : 請求書送付
+}
+
+newpage
+
+rectangle 貨物状況問い合わせ {
+  actor :顧客: as customer
+  actor :運営: as admin
+
+  usecase (貨物検索) as search_cargo
+
+  customer --> admin : 問い合わせ
+  admin --> search_cargo
+}
+
+@enduml
