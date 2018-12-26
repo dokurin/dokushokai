@@ -28,7 +28,7 @@ rectangle 荷役 {
 
 newpage
 
-rectangle 貨物状況問い合わせ {
+rectangle 貨物追跡 {
   actor :顧客: as customer
   actor :運営: as admin
 
