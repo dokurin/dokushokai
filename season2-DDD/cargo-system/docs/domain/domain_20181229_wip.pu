@@ -1,0 +1,23 @@
+@startuml
+class Order
+Order "1" -- "N" Cargo
+
+class Cargo
+Cargo "1" o-- "N" Schedule
+Cargo "1" o-- "N" History
+
+class Schedule
+Schedule "1" -- "1" Port
+Schedule "1" -- "1" Transport
+
+class History
+History "1" -- "1" Port
+History "1" -- "1" Transport
+
+class Transport
+
+class Port
+Port "1" *-- "1" Geo
+
+class Geo
+@enduml

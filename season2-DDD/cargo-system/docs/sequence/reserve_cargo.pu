@@ -1,0 +1,15 @@
+@startuml
+actor Customer
+actor Service
+participant System
+
+Customer -> Service: Book cargo
+Service -> Service: Review customer
+
+opt if not registerd customer
+  Service -> System: Registed Membership
+end opt
+Service -> System: Book cargo
+
+Service --> Customer: Answer for Booking
+@enduml
