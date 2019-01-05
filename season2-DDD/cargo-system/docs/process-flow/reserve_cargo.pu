@@ -1,0 +1,22 @@
+@startuml
+actor User
+participant "Ordering Management Service" as OMS
+control "Event Service" as ES
+
+User -> User: Check
+note right of User
+  * Schedule
+end note
+
+User -> OMS: Scheduling
+note right of User
+  * Schedule
+  * Cargo
+end note
+
+OMS -> ES: Create Event
+ES -> ES: Registered Event
+ES --> OMS: Regisered Response
+
+OMS --> User: Order
+@enduml

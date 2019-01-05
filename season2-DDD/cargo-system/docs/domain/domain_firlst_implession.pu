@@ -1,0 +1,55 @@
+@startuml
+class Cargo {
+  + id: string
+}
+Cargo "1" -- "N" History
+
+class History {
+  + from_transport: Transport
+  + to_transport: Transport
+}
+History "1" -- "2" Transport
+
+class Order {
+  + id :string
+  + fee: float
+}
+Order "1" -- "N" Cargo
+Order "1" -- "1" Schedule
+Order "1" -- "1" Receiver
+Order "1" -- "1" Sender
+
+class Schedule {
+  + start_port: Port
+  + end_port: Port
+  + start_time: datetime
+  + end_time: datetime
+}
+
+Schedule "1" -- "2" Port
+
+class Port {
+  + Name: string
+}
+
+Port "1" -- "N" Geo
+
+class Geo {
+  + lat: float
+  + lng: float
+  + geo_hash: string
+}
+
+class Sender
+Sender "1" -- "0..1" Customer
+
+class Receiver
+Receiver "1" -- "0..1" Customer
+
+class Customer {
+  + id: string
+  + name: string
+}
+
+class Service
+@enduml
