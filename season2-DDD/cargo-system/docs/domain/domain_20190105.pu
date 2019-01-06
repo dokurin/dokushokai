@@ -1,0 +1,90 @@
+@startuml
+namespace Order {
+  class Order <<(E, pink)>> {
+    + ID
+    + 差出人 
+    + 受取人
+    + 支払人
+    + Save()
+  }
+
+  class OrderRepository <<(R, cream)>> {
+    + Save(Order)
+  }
+
+  class Schedule <<(V, yellowgreen)>> {
+    + 出発港: Port
+    + 到着港: Port
+    + 受取予定日: datetime
+    + 出発日時: datetime
+    + 引渡予定日時: datetime
+  }
+}
+Order.Order "1" o-- "N" Cargo.Cargo
+Order.Order "1" *-- "1" Order.Schedule
+Order.Schedule "1" o-- "2" Port
+
+Order.Order --> Cargo.CargoFacgtory
+Order.Order --> Order.OrderRepository
+Order.Order --> Cargo.Cargo
+
+class Port <<(E, pink)>>
+
+package Cargo {
+  class CargoFacgtory <<(F, yellow)>> {
+    + Cargo Create()
+  }
+
+  class CargoRepository <<(R, cream)>> {
+    + Save(Cargo)
+  }
+
+  class Cargo <<(E, pink)>> {
+    + 料金
+    + Save()
+  }
+
+  class History <<(V, yellowgreen)>>{
+    + 移転日時: datetime
+  }
+  
+  class CargoEventDefine <<(V, yellowgreen)>>
+
+  note bottom of Cargo.CargoEventDefine
+    対象のオブジェクトに対して
+    何かしらのアクションを行う定義
+  end note
+
+  enum CargoEventType <<(V, yellowgreen)>> {
+    受取
+    積み込み
+    荷降ろし
+    運搬中
+    引き渡し
+  }
+}
+
+Cargo.Cargo "1" *-- "N" Cargo.History
+Cargo.Cargo "1" *-- "N" Cargo.CargoEventDefine
+Cargo.History "1" o-- "1" Transport
+Cargo.History "1" o-- "1" Cargo.CargoEventType
+Cargo.CargoEventDefine "1" o-- "1" Cargo.CargoEventType
+
+Cargo.CargoFacgtory --> Cargo.Cargo
+Cargo.Cargo --> Cargo.CargoRepository
+
+interface EventDefine
+Cargo.CargoEventDefine --|> EventDefine
+
+class Transport <<(E, pink)>>
+
+note right of Transport
+  責任を負う人 -> 運営
+end note
+@enduml
+
+class OrderService <<(S, aqua)>> {
+  + BookCargo(Order)
+}
+
+OrderService --> Order.Order
