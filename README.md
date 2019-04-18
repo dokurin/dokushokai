@@ -7,6 +7,7 @@
 * [第3回](season2-DDD/03rd.md)
 * [第4回](season2-DDD/04th.md)
 * [第5回](season2-DDD/05th.md)
+* [第17回](season2-DDD/17th.md)
 
 ### 計画
 - 第1回 ~ 3章
