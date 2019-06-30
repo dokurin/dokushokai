@@ -113,7 +113,7 @@ CREATE TABLE FeaturesComments (
 
 ### 共通の親テーブルの作成
 #### どんなパターン？
-* [第５章のクラステーブル継承](season3-SQL_AntiPattern/chapter05.md#%E3%82%AF%E3%83%A9%E3%82%B9%E3%83%86%E3%83%BC%E3%83%96%E3%83%AB%E7%B6%99%E6%89%BF)を利用
+* [第５章のクラステーブル継承](chapter05.md#%E3%82%AF%E3%83%A9%E3%82%B9%E3%83%86%E3%83%BC%E3%83%96%E3%83%AB%E7%B6%99%E6%89%BF)を利用
 * 親テーブルの `Issues` とリレーションを定義する
 
 #### テーブル定義
