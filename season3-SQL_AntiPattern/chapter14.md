@@ -70,8 +70,10 @@ GROUP BY
 | ReConsider          | 2010-01-01 | 5678     |
 
 #### Why?
-* **単一の原則**に違反している
+* **単一の原則(Single-Value Rule)** に違反している
 
+##### DBの気持ちになって考えてみる
+<img height="1200px" src="https://user-images.githubusercontent.com/6662577/61575632-1660aa80-ab09-11e9-8748-5ca0526ef457.jpg"></img>
 
 ## 解決方法
 ### 関数従属性のある列のみクエリを実行する
@@ -109,7 +111,7 @@ FROM
   Bugs b1
   INNER JOIN BugsProducts bp1 USING (bug_id)
 WHERE
-  -- 行ごとにでdate_reportedがより新しいものが存在していないかをチェック
+  -- 行ごとにdate_reportedがより新しいものが存在していないかをチェック
   NOT EXISTS (
     SELECT
       *
