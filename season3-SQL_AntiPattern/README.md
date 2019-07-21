@@ -8,12 +8,10 @@
 # 目次
 * [第１章](chapter01.md)
 * [第２章](chapter02.md)
-* [第３章](chapter03.md)
 * [第４章](chapter04.md)
 * [第５章](chapter05.md)
 * [第６章](chapter06.md)
 * [第７章](chapter07.md)
-* [第８章](chapter07.md)
 * [第１０章](chapter10.md)
 * [第１３章](chapter13.md)
 * [第１４章](chapter14.md)

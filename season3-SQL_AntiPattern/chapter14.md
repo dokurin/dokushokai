@@ -4,6 +4,7 @@
 
 ### サンプルデータ
 #### Products
+
 | product_id | product_name        |
 |------------|---------------------|
 | 1          | Open RoundFile      |
@@ -11,6 +12,7 @@
 | 3          | ReConsider          |
 
 #### BugsProducts
+
 | bug_id | product_id |
 |--------|------------|
 | 1234   | 1          |
@@ -22,6 +24,7 @@
 | 8063   | 3          |
 
 #### Bugs
+
 | bud_id | date_reported |                                 |
 |--------|---------------|---------------------------------|
 | 1234   | 2009-12-19    |                                 |
@@ -33,6 +36,7 @@
 | 8063   | 2009-11-09    |                                 |
 
 ### 期待値
+
 | product_name        | latest     | bug_id |
 |---------------------|------------|--------|
 | Open RoundFile      | 2010-06-01 | 2248   |
@@ -63,6 +67,7 @@ GROUP BY
 * 思ったとおりの結果にならない
 
 #### 思ったとおりの結果にならない例
+
 | product_name        | latest     | bug_id   |
 |---------------------|------------|----------|
 | Open RoundFile      | 2010-06-01 | **1234** |
@@ -73,7 +78,7 @@ GROUP BY
 * **単一の原則(Single-Value Rule)** に違反している
 
 ##### DBの気持ちになって考えてみる
-<img height="1200px" src="https://user-images.githubusercontent.com/6662577/61575632-1660aa80-ab09-11e9-8748-5ca0526ef457.jpg"></img>
+<img height="1200px" src="https://user-images.githubusercontent.com/6662577/61575632-1660aa80-ab09-11e9-8748-5ca0526ef457.jpg" />
 
 ## 解決方法
 ### 関数従属性のある列のみクエリを実行する
@@ -125,6 +130,7 @@ WHERE
 ```
 
 #### 結果
+
 | product_name        | latest     | bug_id |
 |---------------------|------------|--------|
 | Open RoundFile      | 2010-06-01 | 2248   |
@@ -169,6 +175,7 @@ WHERE
 ```
 
 #### 結果
+
 | product_name        | latest     | bug_id |
 |---------------------|------------|--------|
 | Open RoundFile      | 2010-06-01 | 2248   |
@@ -321,6 +328,7 @@ GROUP BY
 ```
 
 #### 結果
+
 | product_name        | latest     | latest_bug_id |
 |---------------------|------------|---------------|
 | Open RoundFile      | 2010-06-01 | 2248          |
@@ -351,6 +359,7 @@ GROUP BY
 ```
 
 #### 結果
+
 | product_id | latest     | bug_id_list    |
 |------------|------------|----------------|
 | 1          | 2010-06-01 | 1234,2248      |
